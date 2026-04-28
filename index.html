@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M&M Limpeza | Limpeza Comercial e Pós‑Obra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --azul-marinho: #0B2B4D;
+            --branco: #FFFFFF;
+            --verde-agua: #69C7B8;
+            --cinza-claro: #F4F6F9;
+            --cinza-medio: #7F8C8D;
+            --sombra: 0 8px 24px rgba(0,0,0,0.08);
+            --transicao: all 0.3s ease;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--branco);
+            color: #2C3E50;
+            line-height: 1.6;
+        }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+
+        @keyframes pingo {
+            0%   { opacity: 0.6; transform: scale(1) translateY(0); }
+            50%  { opacity: 1;   transform: scale(1.25) translateY(-3px); }
+            100% { opacity: 0.6; transform: scale(1) translateY(0); }
+        }
+        @keyframes brilho {
+            0%   { opacity: 0.5; transform: scale(1); }
+            50%  { opacity: 1;   transform: scale(1.3); }
+            100% { opacity: 0.5; transform: scale(1); }
+        }
+
+        header {
+            background: var(--azul-marinho);
+            position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        .nav-container {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 24px; flex-wrap: wrap; gap: 16px;
+        }
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem; font-weight: 800;
+            color: var(--branco); text-decoration: none;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .logo .m-letra { position: relative; display: inline-block; }
+        .logo .gota {
+            font-size: 2.2rem;
+            color: var(--verde-agua);
+            animation: pingo 2s infinite ease-in-out;
+            display: inline-block;
+            margin-left: 2px;
+        }
+        .logo .fa-sparkle {
+            color: var(--verde-agua);
+            font-size: 1.6rem;
+            animation: brilho 2.5s infinite;
+            margin-left: 4px;
+        }
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+        .nav-links a {
+            text-decoration: none; color: rgba(255,255,255,0.85);
+            font-weight: 600; font-size: 0.9rem;
+            padding: 6px 0; transition: var(--transicao);
+            border-bottom: 2px solid transparent;
+        }
+        .nav-links a:hover { color: var(--verde-agua); border-bottom-color: var(--verde-agua); }
+        .btn-whatsapp-nav {
+            background: #25D366; color: white !important;
+            padding: 10px 22px; border-radius: 30px;
+            font-weight: 700; display: inline-flex; align-items: center; gap: 8px;
+            text-decoration: none; font-size: 0.9rem; transition: var(--transicao);
+            box-shadow: 0 4px 12px rgba(37,211,102,0.3);
+        }
+        .btn-whatsapp-nav:hover { background: #1da851; transform: translateY(-2px); }
+
+        section { padding: 80px 24px; }
+        .container { max-width: 1300px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 56px; }
+        .section-title h2 {
+            font-size: 2.2rem; font-weight: 800; color: var(--azul-marinho);
+            position: relative; display: inline-block;
+        }
+        .section-title h2::after {
+            content: '';
+            position: absolute; width: 60px; height: 4px;
+            background: var(--verde-agua);
+            bottom: -12px; left: 50%; transform: translateX(-50%); border-radius: 4px;
+        }
+        .section-title p { color: var(--cinza-medio); margin-top: 20px; font-size: 1.05rem; }
+
+        .hero {
+            background: linear-gradient(135deg, #0B2B4D 0%, #144272 100%);
+            padding: 100px 24px; display: flex; align-items: center; justify-content: center;
+            text-align: center; position: relative; overflow: hidden;
+        }
+        .hero-content { max-width: 800px; position: relative; z-index: 2; }
+        .hero h1 {
+            font-size: 2.8rem; font-weight: 800; color: white;
+            margin-bottom: 16px; line-height: 1.2;
+        }
+        .hero h1 span { color: var(--verde-agua); }
+        .hero p { font-size: 1.15rem; color: rgba(255,255,255,0.85); margin-bottom: 32px; }
+        .btn-hero {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--verde-agua); color: var(--azul-marinho);
+            padding: 15px 36px; border-radius: 40px;
+            font-weight: 700; font-size: 1rem; text-decoration: none;
+            transition: var(--transicao); box-shadow: 0 8px 20px rgba(105,199,184,0.3);
+        }
+        .btn-hero:hover { background: #5AB3A5; transform: translateY(-3px); }
+
+        #servicos { background: var(--cinza-claro); }
+        .servicos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+        .servico-card {
+            background: white; border-radius: 16px; padding: 30px 22px;
+            box-shadow: var(--sombra); transition: var(--transicao);
+            border-top: 4px solid var(--verde-agua);
+            display: flex; flex-direction: column;
+        }
+        .servico-card:hover { transform: translateY(-8px); box-shadow: 0 12px 28px rgba(0,0,0,0.12); }
+        .servico-card i { font-size: 2.2rem; color: var(--azul-marinho); margin-bottom: 16px; }
+        .servico-card h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--azul-marinho); }
+        .servico-card p { color: #555; font-size: 0.92rem; flex: 1; }
+
+        #diferenciais { background: white; }
+        .dif-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; text-align: center; }
+        .dif-item i { font-size: 2rem; color: var(--verde-agua); margin-bottom: 14px; }
+        .dif-item h4 { font-size: 1.2rem; color: var(--azul-marinho); margin-bottom: 8px; }
+        .dif-item p { color: var(--cinza-medio); font-size: 0.9rem; }
+
+        /* PARCEIROS - Somente nome e logo fictícia */
+        #parceiros { background: var(--cinza-claro); }
+        .parceiros-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
+        .parceiro-card {
+            background: white;
+            border-radius: 20px;
+            padding: 28px 16px;
+            box-shadow: var(--sombra);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: var(--transicao);
+            width: 100%;
+            max-width: 180px;
+        }
+        .parceiro-card:hover { transform: translateY(-6px); box-shadow: 0 12px 28px rgba(0,0,0,0.12); }
+        .parceiro-logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--azul-marinho) 0%, #1f4a7a 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.6rem;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(11,43,77,0.25);
+        }
+        .parceiro-nome {
+            font-weight: 700;
+            color: var(--azul-marinho);
+            font-size: 0.95rem;
+            line-height: 1.3;
+        }
+
+        #depoimentos { background: var(--cinza-claro); }
+        .depoimentos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+        .depoimento-card {
+            background: white; border-radius: 16px; padding: 32px 28px;
+            box-shadow: var(--sombra); border-left: 4px solid var(--verde-agua);
+        }
+        .depoimento-card .stars { color: #F1C40F; margin-bottom: 12px; }
+        .depoimento-card p { color: #444; font-style: italic; margin-bottom: 16px; }
+        .depoimento-card .nome { font-weight: 700; color: var(--azul-marinho); }
+
+        footer {
+            background: var(--azul-marinho); color: rgba(255,255,255,0.8);
+            padding: 56px 24px 24px;
+        }
+        .footer-container {
+            max-width: 1100px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px;
+        }
+        .footer-col h3 {
+            color: white; margin-bottom: 20px; font-size: 1.2rem;
+            border-bottom: 2px solid var(--verde-agua); display: inline-block; padding-bottom: 6px;
+        }
+        .footer-col p, .footer-col a {
+            color: rgba(255,255,255,0.75); text-decoration: none; display: block;
+            margin-bottom: 12px; transition: var(--transicao); font-size: 0.93rem;
+        }
+        .footer-col a:hover { color: var(--verde-agua); }
+        .footer-col i { margin-right: 8px; color: var(--verde-agua); width: 18px; text-align: center; }
+        .footer-whatsapp {
+            background: #25D366; color: white !important; padding: 12px 22px; border-radius: 30px;
+            display: inline-flex; align-items: center; gap: 8px; font-weight: 700;
+            text-decoration: none; transition: var(--transicao);
+        }
+        .footer-whatsapp:hover { background: #1da851; transform: translateY(-2px); }
+        .footer-bottom {
+            text-align: center; margin-top: 40px; padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.82rem; color: rgba(255,255,255,0.6);
+        }
+
+        @media(max-width: 768px) {
+            .nav-container { flex-direction: column; }
+            .nav-links { gap: 14px; }
+            .hero h1 { font-size: 2rem; }
+            .logo .gota { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav-container">
+        <a href="#" class="logo">
+            <span class="m-letra">M</span><span class="m-letra">&</span>M
+            <i class="fa-solid fa-droplet gota"></i>
+            <i class="fa-solid fa-sparkle"></i>
+            <span style="font-size: 1rem; font-weight: 400;">Limpeza</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#diferenciais">Diferenciais</a></li>
+            <li><a href="#parceiros">Parceiros</a></li>
+            <li><a href="#depoimentos">Depoimentos</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+        <a href="https://wa.me/5542998085352?text=Olá! Gostaria de um orçamento para limpeza." target="_blank" class="btn-whatsapp-nav">
+            <i class="fab fa-whatsapp"></i> Orçamento
+        </a>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Limpeza <span>Profissional</span> que seu negócio merece</h1>
+        <p>Especialistas em limpeza comercial, residencial e pós‑obra. Transformamos ambientes com eficiência, brilho e confiança.</p>
+        <a href="https://wa.me/5542998085352?text=Olá! Gostaria de um orçamento para limpeza." target="_blank" class="btn-hero">
+            <i class="fas fa-hand-sparkles"></i> Solicitar Orçamento
+        </a>
+    </div>
+</section>
+
+<section id="servicos">
+    <div class="container">
+        <div class="section-title">
+            <h2>Nossos Serviços</h2>
+            <p>Soluções completas para cada necessidade, do residencial ao corporativo</p>
+        </div>
+        <div class="servicos-grid">
+            <div class="servico-card"><i class="fas fa-building"></i><h3>Limpeza Comercial</h3><p>A primeira impressão do seu cliente começa pela limpeza. Mantenha seu ambiente de trabalho impecável, produtivo e higienizado com horários flexíveis.</p></div>
+            <div class="servico-card"><i class="fas fa-hard-hat"></i><h3>Limpeza Pós‑Obra</h3><p>Remoção de poeira, respingos de tinta, restos de gesso e limpeza profunda de pisos e vidros. Seu imóvel pronto para morar ou trabalhar.</p></div>
+            <div class="servico-card"><i class="fas fa-clinic-medical"></i><h3>Higienização de Clínicas</h3><p>Protocolos rigorosos para consultórios, clínicas e laboratórios. Produtos certificados e técnicas que garantem ambiente seguro e esterilizado.</p></div>
+            <div class="servico-card"><i class="fas fa-building-shield"></i><h3>Limpeza de Condomínios</h3><p>Limpeza de áreas comuns, halls, elevadores e garagens. Equipe dedicada e cronograma personalizado para seu condomínio.</p></div>
+            <div class="servico-card"><i class="fas fa-window-maximize"></i><h3>Limpeza de Vidros e Fachadas</h3><p>Limpeza técnica de janelas, fachadas envidraçadas e painéis de vidro com equipamentos de segurança e produtos específicos.</p></div>
+            <div class="servico-card"><i class="fas fa-couch"></i><h3>Limpeza de Estofados e Carpetes</h3><p>Higienização profunda com extração de água e produtos hipoalergênicos. Remoção de ácaros, manchas e odores.</p></div>
+            <div class="servico-card"><i class="fas fa-water"></i><h3>Limpeza de Caixas d'Água</h3><p>Serviço essencial para a saúde. Limpeza interna completa de reservatórios, seguindo as normas da vigilância sanitária.</p></div>
+            <div class="servico-card"><i class="fas fa-fire-extinguisher"></i><h3>Limpeza Pós‑Incêndio</h3><p>Remoção de fuligem, resíduos de fumaça e neutralização de odores. Recuperação de ambientes afetados por incêndios.</p></div>
+            <div class="servico-card"><i class="fas fa-tree-city"></i><h3>Limpeza de Áreas Externas</h3><p>Varrição, lavagem de calçadas, pátios e estacionamentos. Cuidado com jardins e áreas verdes durante o processo.</p></div>
+            <div class="servico-card"><i class="fas fa-hospital"></i><h3>Limpeza Hospitalar</h3><p>Desinfecção de alto nível para ambientes hospitalares. Utilização de produtos quaternários de amônia e técnicas de isolamento.</p></div>
+            <div class="servico-card"><i class="fas fa-school"></i><h3>Limpeza de Escolas e Creches</h3><p>Higienização focada em segurança infantil. Produtos atóxicos, limpeza de brinquedos, salas e banheiros com frequência programada.</p></div>
+            <div class="servico-card"><i class="fas fa-box"></i><h3>Limpeza Pré‑Mudança</h3><p>Preparação completa do imóvel antes da sua chegada. Limpeza geral, armários, rodapés e sanitização para um novo começo.</p></div>
+            <div class="servico-card"><i class="fas fa-pump-medical"></i><h3>Desinfecção Sanitizada</h3><p>Aplicação de produtos viricidas e bactericidas em superfícies de alto toque. Ideal para prevenção de COVID‑19 e outras viroses.</p></div>
+        </div>
+    </div>
+</section>
+
+<section id="diferenciais">
+    <div class="container">
+        <div class="section-title">
+            <h2>Por que escolher a M&M?</h2>
+            <p>Compromisso com a excelência em cada detalhe</p>
+        </div>
+        <div class="dif-grid">
+            <div class="dif-item"><i class="fas fa-leaf"></i><h4>Produtos Sustentáveis</h4><p>Utilizamos produtos biodegradáveis que não agridem o meio ambiente.</p></div>
+            <div class="dif-item"><i class="fas fa-clock"></i><h4>Horários Flexíveis</h4><p>Atendemos fora do horário comercial para não atrapalhar sua rotina.</p></div>
+            <div class="dif-item"><i class="fas fa-shield-alt"></i><h4>Equipe Treinada</h4><p>Profissionais capacitados e uniformizados, com supervisão constante.</p></div>
+            <div class="dif-item"><i class="fas fa-star"></i><h4>Garantia de Satisfação</h4><p>Se não ficar satisfeito, voltamos sem custo adicional.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- SEÇÃO DE PARCEIROS (apenas nome e logo fictícia) -->
+<section id="parceiros">
+    <div class="container">
+        <div class="section-title">
+            <h2>Empresas Parceiras</h2>
+            <p>Construtoras e empreiteiras que confiam em nossos serviços em Ponta Grossa</p>
+        </div>
+        <div class="parceiros-grid">
+            <div class="parceiro-card"><div class="parceiro-logo">ER</div><span class="parceiro-nome">ERES Construtora</span></div>
+            <div class="parceiro-card"><div class="parceiro-logo">VB</div><span class="parceiro-nome">VB Construção Civil Ltda</span></div>
+            <div class="parceiro-card"><div class="parceiro-logo">ÁT</div><span class="parceiro-nome">Átimo Engenharia</span></div>
+            <div class="parceiro-card"><div class="parceiro-logo">CL</div><span class="parceiro-nome">Construtora Legacy</span></div>
+            <div class="parceiro-card"><div class="parceiro-logo">CU</div><span class="parceiro-nome">Construtora União</span></div>
+            <div class="parceiro-card"><div class="parceiro-logo">GE</div><span class="parceiro-nome">Gamedeiros Engenharia Civil</span></div>
+            <div class="parceiro-card"><div class="parceiro-logo">AR</div><span class="parceiro-nome">Arquipar Construtora</span></div>
+            <div class="parceiro-card"><div class="parceiro-logo">GC</div><span class="parceiro-nome">Grupo Construa</span></div>
+            <div class="parceiro-card"><div class="parceiro-logo">JB</div><span class="parceiro-nome">Empreiteira J.A Borges</span></div>
+            <div class="parceiro-card"><div class="parceiro-logo">CM</div><span class="parceiro-nome">Construtora Miquelão</span></div>
+            <div class="parceiro-card"><div class="parceiro-logo">CC</div><span class="parceiro-nome">Construtora Carvalho</span></div>
+            <div class="parceiro-card"><div class="parceiro-logo">CS</div><span class="parceiro-nome">Consmar Construtora</span></div>
+            <div class="parceiro-card"><div class="parceiro-logo">M3</div><span class="parceiro-nome">M3H Construtora Ltda.</span></div>
+            <div class="parceiro-card"><div class="parceiro-logo">BS</div><span class="parceiro-nome">Construtora Baggio Silveira</span></div>
+            <div class="parceiro-card"><div class="parceiro-logo">PF</div><span class="parceiro-nome">PF Construção e reforma</span></div>
+            <div class="parceiro-card"><div class="parceiro-logo">EC</div><span class="parceiro-nome">ECB Engenharia Civil</span></div>
+            <div class="parceiro-card"><div class="parceiro-logo">LA</div><span class="parceiro-nome">Construtora LAAR</span></div>
+            <div class="parceiro-card"><div class="parceiro-logo">EM</div><span class="parceiro-nome">EMECON Construções</span></div>
+            <div class="parceiro-card"><div class="parceiro-logo">IN</div><span class="parceiro-nome">INVICTA Engenharia</span></div>
+        </div>
+    </div>
+</section>
+
+<section id="depoimentos">
+    <div class="container">
+        <div class="section-title">
+            <h2>O que dizem nossos clientes</h2>
+        </div>
+        <div class="depoimentos-grid">
+            <div class="depoimento-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Contratamos a M&M para a limpeza do nosso escritório e a diferença foi imediata. Ambiente impecável e equipe muito profissional."</p>
+                <span class="nome">— Ricardo A., Empresário</span>
+            </div>
+            <div class="depoimento-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Após a reforma, minha casa estava irreconhecível de tanta poeira. A equipe da M&M deixou tudo brilhando, até os vidros!"</p>
+                <span class="nome">— Fernanda L., Cliente residencial</span>
+            </div>
+            <div class="depoimento-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Nossa clínica precisa de um alto padrão de higiene. A M&M superou as expectativas, seguindo todos os protocolos."</p>
+                <span class="nome">— Dra. Mariana C.</span>
+            </div>
+            <div class="depoimento-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Serviço pós‑obra impecável! Removeram toda a poeira de gesso e deixaram o apartamento pronto para morar em tempo recorde."</p>
+                <span class="nome">— Carlos M., Engenheiro</span>
+            </div>
+            <div class="depoimento-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"A M&M cuida da limpeza do nosso condomínio há mais de um ano. Pontualidade e qualidade são marcas registradas da equipe."</p>
+                <span class="nome">— Síndica Patrícia H.</span>
+            </div>
+            <div class="depoimento-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Limpeza de vidros e fachada sem deixar manchas. Trabalham com total segurança e o resultado foi nota 10!"</p>
+                <span class="nome">— Roberto S., Gerente Comercial</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer id="contato">
+    <div class="footer-container">
+        <div class="footer-col">
+            <h3>M&M Limpeza</h3>
+            <p><i class="fas fa-map-marker-alt"></i> R. Sen. Pinheiro Machado, 446</p>
+            <p style="margin-bottom:4px;">Centro, Ponta Grossa - PR</p>
+            <p style="margin-bottom:12px;">CEP 84010-310</p>
+            <p><i class="fas fa-phone"></i> (42) 99808-5352</p>
+            <a href="https://wa.me/5542998085352?text=Olá! Gostaria de um orçamento." target="_blank" class="footer-whatsapp">
+                <i class="fab fa-whatsapp"></i> Fale Conosco
+            </a>
+        </div>
+        <div class="footer-col">
+            <h3>Links Rápidos</h3>
+            <a href="#servicos">Serviços</a>
+            <a href="#diferenciais">Diferenciais</a>
+            <a href="#parceiros">Parceiros</a>
+            <a href="#depoimentos">Depoimentos</a>
+        </div>
+        <div class="footer-col">
+            <h3>Áreas de Atuação</h3>
+            <p>Limpeza Comercial</p>
+            <p>Pós‑Obra</p>
+            <p>Condomínios</p>
+            <p>Higienização de Clínicas</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 M&M Limpeza. Todos os direitos reservados. | Brilho que transforma ambientes.
+    </div>
+</footer>
+
+</body>
+</html>
